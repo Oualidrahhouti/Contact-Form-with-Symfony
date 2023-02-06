@@ -9,14 +9,38 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hi there!</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/zzwal/Desktop/Waliiid/L3 info/contact-form/src/Controller/TestCotrollerController.php'|file_link(0) }}">src/Controller/TestCotrollerController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/zzwal/Desktop/Waliiid/L3 info/contact-form/templates/test_cotroller/index.html.twig'|file_link(0) }}">templates/test_cotroller/index.html.twig</a></code></li>
-    </ul>
-    {{ form(contactForm) }}
-    <button class="btn btn-primary">hello</button>
+    This is a form for contacting us <br>
+
+    {{ form_start(contactForm,{'attr':{'class':'mt-3'}}) }}
+        {% if form_errors(contactForm.Internaute.email) %}
+             <div class="alert alert-danger" role="alert">
+                 {{form_errors(contactForm.Internaute.email)}}
+             </div>
+        {% endif %}
+        {% if form_errors(contactForm.Internaute.nom) %}
+            <div class="alert alert-danger" role="alert">
+                {{form_errors(contactForm.Internaute.nom)}}
+            </div>
+        {% endif %}
+        {% if form_errors(contactForm.Question.question) %}
+            <div class="alert alert-danger" role="alert">
+                {{form_errors(contactForm.Question.question)}}
+            </div>
+        {% endif %}
+        <div class="mb-3">
+            {{ form_label(contactForm.Internaute.nom,'Nom',{'label_attr':{'class':'form-label'}}) }}
+            {{ form_widget(contactForm.Internaute.nom,{'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(contactForm.Internaute.email,'Email',{'label_attr':{'for':'email','class':'form-label'}}) }}
+            {{ form_widget(contactForm.Internaute.email,{'attr':{'id':'email','class':'form-control'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(contactForm.Question.question,'Question',{'label_attr':{'for':'question','class':'form-label'}}) }}
+            {{ form_widget(contactForm.Question.question,{'attr':{'class':'form-control'}}) }}
+        </div>
+    {{ form_end(contactForm) }}
 </div>
 {% endblock %}
