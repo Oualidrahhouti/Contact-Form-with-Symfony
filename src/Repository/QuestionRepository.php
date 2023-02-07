@@ -39,6 +39,26 @@ class QuestionRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllJoinInternaute()
+    {
+        return $this->createQueryBuilder('q')
+            ->join('q.internaute','i')
+            ->select('i.id as internauteId,i.nom,i.email,q.question,q.vu')
+            ->orderBy('q.id','desc')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByInternaute($id)
+    {
+        return $this->createQueryBuilder('q')
+            ->join('q.internaute','i')
+            ->where('i.id= :id')
+            ->setParameter('id',$id)
+            ->select('i.nom,i.email,q.question,q.vu')
+            ->getQuery()
+            ->getResult();
+    }
 //    /**
 //     * @return Question[] Returns an array of Question objects
 //     */

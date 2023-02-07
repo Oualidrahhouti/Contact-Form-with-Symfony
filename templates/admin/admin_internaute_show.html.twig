@@ -1,0 +1,32 @@
+{% extends 'admin/admin_base.html.twig' %}
+{% block body %}
+    <div class="container-fluid w-75 mt-5 ">
+    {% if questions | length %}
+        <h1 class="mb-5">Liste des questions envoyées par {{ questions[0].email }}</h1>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Question</th>
+                <th scope="col">Vu</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for question in questions %}
+                <tr>
+                    <th scope="row">{{ question.nom }}</th>
+                    <td>{{ question.question }}</td>
+                    <td>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" {% if question.vu %} checked {% endif%} id="defaultCheck1">
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1 class="mb-5">Questions Introuvable!</h1>
+    {% endif %}
+{% endblock %}
