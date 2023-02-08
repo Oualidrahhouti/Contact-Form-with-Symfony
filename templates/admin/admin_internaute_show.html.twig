@@ -18,9 +18,9 @@
                     <td>{{ question.question }}</td>
                     <td>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" {% if question.vu %} checked {% endif%} id="defaultCheck1">
-                        </div>
+                        <a href="{{ path('questionCheck',{"id":question.id}) }}">
+                            <input class="form-check-input questionsCheck" type="checkbox" {% if question.vu %} checked {% endif%}>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

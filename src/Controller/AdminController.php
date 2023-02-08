@@ -41,7 +41,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/question/{id}/vue",methods={"GET"})
+     * @Route("/question/{id}/vu",methods={"POST"},name="questionCheck")
      */
     public function questionVu(QuestionRepository $questionRepository,EntityManagerInterface $entityManager,$id=0)
     {

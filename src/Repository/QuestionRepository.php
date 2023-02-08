@@ -43,7 +43,7 @@ class QuestionRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('q')
             ->join('q.internaute','i')
-            ->select('i.id as internauteId,i.nom,i.email,q.question,q.vu')
+            ->select('i.id as internauteId,i.nom,i.email,q.question,q.vu,q.id')
             ->orderBy('q.id','desc')
             ->getQuery()
             ->getResult();
@@ -55,7 +55,8 @@ class QuestionRepository extends ServiceEntityRepository
             ->join('q.internaute','i')
             ->where('i.id= :id')
             ->setParameter('id',$id)
-            ->select('i.nom,i.email,q.question,q.vu')
+            ->select('i.nom,i.email,q.question,q.vu,q.id')
+            ->orderBy('q.id','desc')
             ->getQuery()
             ->getResult();
     }
