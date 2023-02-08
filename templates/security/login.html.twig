@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SecurityController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    {% if error %}
+        <div class="alert alert-danger"> {{ error.messageKey }}</div>
+    {% endif %}
+    <h1>Connexion</h1>
+    <form class="mt-3" action="{{ path('app_login') }}" method="post">
+        <label for="username" class="form-label mt-3">Email</label>
+        <input type="email" class="form-control" id="username" name="_username" value="{{ lastUserName }}" required>
+        <label for="password" class="form-label mt-3">Password</label>
+        <input type="password" class="form-control" id="password" name="_password" required>
+        <input type="hidden" name="_target_path" value="/admin">
+        <button type="submit" class="btn btn-primary mt-3">Se Connecter</button>
+    </form>
+
+</div>
+{% endblock %}

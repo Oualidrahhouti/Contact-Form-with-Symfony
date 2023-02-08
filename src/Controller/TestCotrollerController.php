@@ -8,6 +8,7 @@ use App\Form\ContactType;
 use App\Repository\InternauteRepository;
 use App\Repository\QuestionRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,27 +53,7 @@ class TestCotrollerController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin",name="adminHome")
-     */
-    public function admin(QuestionRepository $questionRepository):Response
-    {
-        $questions=$questionRepository->findAllJoinInternaute();
 
-        return $this->render("admin/admin_dashboard.html.twig",[
-            "questions"=>$questions
-        ]);
-    }
-    /**
-     * @Route("/admin/internaute/{id}",name="adminInternauteShow")
-     */
-    public function adminShowInternaute(QuestionRepository $questionRepository,$id):Response
-    {
-        $questions=$questionRepository->findByInternaute($id);
 
-        return $this->render("admin/admin_internaute_show.html.twig",[
-            "questions"=>$questions
-        ]);
-    }
 
 }
