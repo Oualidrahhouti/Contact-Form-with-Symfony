@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Repository\QuestionRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -36,5 +38,24 @@ class AdminController extends AbstractController
             "questions"=>$questions,
             "admin"=>$this->getUser()
         ]);
+    }
+
+    /**
+     * @Route("/question/{id}/vue",methods={"GET"})
+     */
+    public function questionVu(QuestionRepository $questionRepository,EntityManagerInterface $entityManager,$id=0)
+    {
+        if(!$this->getUser())
+            return new JsonResponse("action non autorisée !!",Response::HTTP_FORBIDDEN);
+        $question=$questionRepository->findOneBy([
+            "id"=>$id
+        ]);
+        if(!$question)
+            return new JsonResponse("question introuvable !",Response::HTTP_NOT_FOUND);
+        $question->setVu(!$question->isVu());
+        $entityManager->flush();
+        return new JsonResponse("action bien effectuée",Response::HTTP_OK);
+
+
     }
 }
