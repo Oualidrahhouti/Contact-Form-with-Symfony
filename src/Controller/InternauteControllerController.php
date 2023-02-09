@@ -17,6 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class InternauteControllerController extends AbstractController
 {
     /**
+     * this route is used for the contact-us form
      * @Route("/", name="app_test_cotroller")
      */
     public function index(Request $request,InternauteRepository $internauteRepository,
@@ -32,6 +33,7 @@ class InternauteControllerController extends AbstractController
             $internaut=$internauteRepository->findOneBy([
                 'email'=>$email
             ]);
+            //if the passed email is unfound, we create a new client
             if(!$internaut)
             {
                 $nom=$contactForm->getData()["Internaute"]->getNom();

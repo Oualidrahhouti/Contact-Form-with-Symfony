@@ -17,6 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     /**
+     * this route shows all the questions
      * @Route("",name="adminHome")
      */
     public function admin(QuestionRepository $questionRepository):Response
@@ -29,6 +30,7 @@ class AdminController extends AbstractController
         ]);
     }
     /**
+     * this route shows all the questions of a client
      * @Route("/internaute/{id}",name="adminInternauteShow")
      */
     public function adminShowInternaute(QuestionRepository $questionRepository,$id):Response
@@ -41,6 +43,7 @@ class AdminController extends AbstractController
     }
 
     /**
+     * this route toggle the "vu" attribute of a question
      * @Route("/question/{id}/vu",methods={"POST"},name="questionCheck")
      */
     public function questionVu(QuestionRepository $questionRepository,EntityManagerInterface $entityManager,$id=0)

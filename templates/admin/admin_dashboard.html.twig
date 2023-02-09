@@ -16,6 +16,7 @@
                 {% for question in questions %}
                     <tr>
                         <th scope="row">{{ question.nom }}</th>
+                        <!--the column below generates a link to a page the shows all the questions of the current email -->
                         <td><a class="link-secondary" href={{ path('adminInternauteShow',{'id':question.internauteId}) }} >{{ question.email }}</a></td>
                         <td>{{ question.question }}</td>
                         <td>
