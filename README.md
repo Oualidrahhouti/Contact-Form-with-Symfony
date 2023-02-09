@@ -17,6 +17,7 @@ The project includes the following features:
   <li>The grouping of multiple contact requests from the same email address into a single request for easy management.</li>
   <li>The creation of a unique JSON file for each contact request, containing all the relevant information, and stored in a directory that is not exposed by the web server.</li>
 </ul>
+
 ## Authors
 
 * **Oualid RAHHOUTI** - ** - [Oualid RAHHOUTI](https://github.com/Oualidrahhouti) - **
