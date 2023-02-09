@@ -1,5 +1,3 @@
-# Contact-Form-with-Symfony
-<br/>
 <p align="center">
   <h1 align="center">Contact-Form-with-Symfon</h1>
 </p>
