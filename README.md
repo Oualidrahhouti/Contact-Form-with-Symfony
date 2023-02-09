@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">Contact-Form-with-Symfon</h1>
+  <h1 align="center">Contact-Form-with-Symfony</h1>
 </p>
 
 
